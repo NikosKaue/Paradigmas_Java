@@ -5,7 +5,7 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Point;
 
-public class Rectangle extends Figure {
+public class Rectangle{
     private Dimension dim;
 
     Rectangle(Point pos, Dimension dim) {
