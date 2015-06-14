@@ -1,19 +1,26 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package animator;
 
-public class Triangle {         
-        BufferedImage buffer = new BufferedImage(600, 600, BufferedImage.TRANSLUCENT);  
-        Graphics2D g = buffer.createGraphics();  
-        Polygon p = new Polygon();  
-        g.setColor(Color.red);  
-        p.addPoint(0, 50);  
-        p.addPoint(25, 0);  
-        p.addPoint(50, 50);  
-          
-        g.fillPolygon(p);  
-        return new ImageIcon(buffer);  
-    }  
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Point;
+import java.awt.geom.GeneralPath;
+import java.awt.geom.Point2D;
+
+public class Triangle{
+    
+    public Triangle(Point p, Dimension dim, String path, String color){
+        this.pos = p;
+        this.origem = new Point((int) p.getX(), (int) p.getY(), (int) p.getZ());
+        this.dim = dim;
+        this.path = path;
+        this.width = 60;
+        this.heigth = 30;
+        this.color = color;
+    }
+    
+    public void draw(Graphics g){
+        g.setColor(this.stringToColor(this.color));
+        g.fillOval((int)pos.getX(), (int) pos.getY(), (int) p.getZ(), this.width, this.heigth);
+    }
+}
