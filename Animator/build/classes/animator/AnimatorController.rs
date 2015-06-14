@@ -1,0 +1,5 @@
+animator.AnimatorController$1
+animator.Speed
+animator.AnimatorController
+animator.ShapeType
+animator.AnimatorController$2
