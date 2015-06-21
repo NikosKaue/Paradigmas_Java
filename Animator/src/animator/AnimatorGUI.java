@@ -114,11 +114,6 @@ public class AnimatorGUI extends javax.swing.JFrame {
         jLabel9.setText("Shape");
 
         comboShape.setModel(new javax.swing.DefaultComboBoxModel(ShapeType.values()));
-        comboShape.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboShapeActionPerformed(evt);
-            }
-        });
 
         jMenu1.setText("File");
 
@@ -269,10 +264,6 @@ public class AnimatorGUI extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Animator 1.0", "About", 
                 JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jMenuItemAboutActionPerformed
-
-    private void comboShapeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboShapeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_comboShapeActionPerformed
 
     /**
      * @param args the command line arguments

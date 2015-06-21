@@ -4,15 +4,17 @@ import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.image.BufferedImage;
 
-// Uma imagem na animacao.
+// IMAGEM NA ANIMAÇÃO
 class Image {
 
     BufferedImage img;
     Point pos;
+    String path;
 
-    public Image(Point pos, BufferedImage img) {
+    public Image(Point pos, BufferedImage img, String path) {
         this.pos = pos;
         this.img = img;
+        this.path = path;
     }
 
     public Point getPos() {
@@ -28,4 +30,17 @@ class Image {
     public void move() {
        
     }
+    
+    public String Path(){
+        return path;
+    }
+    
+    public void setPoint(Point p){
+        this.pos = p;
+    }
+    
+    public Point getPoint(){
+        return pos;
+    }
+    
 }

@@ -3,10 +3,9 @@ package animator;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
-import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
-// Area onde eh mostrada a animacao.
+// ONDE A ANIMAÇÃO É MOSTRADA.
 class AnimationPanel extends JPanel implements Runnable {
 
     private Dimension dim;
@@ -47,4 +46,3 @@ class AnimationPanel extends JPanel implements Runnable {
         }
     }
 }
-

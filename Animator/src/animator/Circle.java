@@ -1,26 +1,37 @@
 package animator;
 
-import java.awt.Dimension;
+import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.Point;
-import java.awt.geom.GeneralPath;
-import java.awt.geom.Point2D;
 
 public class Circle {
-      
-    public Circle(Point p, Dimension dim, String path, String color){
-        this.pos = p;
-        this.origem = new Point((int) p.getX(), (int) p.getY());
-        this.dim = dim;
+    
+    private String path;
+    private int radius1;
+    private int radius2;
+    private Point p;
+       
+    public Circle(Point p, String path, int radius1, int radius2){
+        this.p = p;
         this.path = path;
-        this.width = 60;
-        this.heigth = 60;
-        this.color = color;
+        this.radius1 = radius1;
+        this.radius2 = radius2;
     }
     
-    public void draw(Graphics g){
-        g.setColor(this.stringToColor(this.color));
-        g.fillOval((int)pos.getX(), (int) pos.getY(), this.width, this.heigth);
+    public void desenha(Graphics g){
+        g.setColor(Color.yellow);
+        g.fillOval(p.x, p.y, radius1, radius2);
+    }
+    
+    public String Path(){
+        return path;
+    }
+    
+    public void setPoint(Point p){
+        this.p = p;
+    }
+    
+    public Point getPoint(){
+        return p;
     }
 }

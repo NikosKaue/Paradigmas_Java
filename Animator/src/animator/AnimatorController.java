@@ -11,7 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
 enum Speed {
-    High(30),
+    High(5),
     Medium(100),
     Low(300);
     private final int millis; 
@@ -26,9 +26,9 @@ enum Speed {
 }
 
 enum ShapeType {
-    Star,
-    Rectangle,
-    Circle;
+    ESTRELA,
+    RETANGULO,
+    CIRCULO;
 }
 
 public class AnimatorController {
@@ -46,7 +46,7 @@ public class AnimatorController {
     private static final Speed defaultSpeed = Speed.High;
     private static final int defaultNumberOfObjects = 1;
     private static final String defaultFilename = "spaceship-small.png";
-    
+        
     public AnimatorController(AnimatorGUI view) {
         this.isRunning = false;
         this.view = view;
@@ -65,7 +65,7 @@ public class AnimatorController {
         return defaultFilename;
     }
 
-    // Metodo chamado pelo botao Stop
+    // MÉTODO CHAMADO PELO BOTÃO STOP
     public void stop() {
         if (animFrame != null)
                 animFrame.dispose();
@@ -75,7 +75,7 @@ public class AnimatorController {
         view.setStopped();
     }
     
-    // Metodo chamado pelo botao Run
+    // MÉTODO CHAMADO PELO BOTÃO RUN
     public void run() {
         view.setRunning();
         SwingUtilities.invokeLater(new Runnable() {
@@ -89,16 +89,12 @@ public class AnimatorController {
                     stop();
                     view.showMessage(e.getMessage());
                     System.out.println(e.getMessage().isEmpty());
-                    //if (e.getMessage().isEmpty())
-                        //e.printStackTrace();
-                    //else 
-                    //    view.showMessage(e.getMessage());
                 }
             }
         });
     }
 
-    // Configuracao basica da animacao (tamanho e velocidade)
+    // CONFIGURAÇÃO DO TAMANHO E VELOCIDADE DA ANIMAÇÃO.
     private void readAnimConfig() {
         dim = new Dimension(Integer.parseInt(view.getTextWidth()),
                             Integer.parseInt(view.getTextHeight()));
@@ -106,11 +102,11 @@ public class AnimatorController {
         millis = s.getMillis();        
     }
     
-    // Cria objetos da animacao conforme configurado na interface grafica
+    // CRIAÇÃO DOS OBJETOS DE ANMAÇÃO, CONFORME SOLICITADOS PELO USUARIO
     private void createObjectSet() throws Exception {
-        objs = new ObjectSet();
+        objs = new ObjectSet(dim);
         
-        // Inicio da criacao dos objetos Image
+        // ADIÇÃO DO OBJETO IMAGEM
         int nImages = (Integer) view.getSpinnerImages().getValue();
         String imageName = view.getTextImage().getText();
         BufferedImage image = readImage(imageName);
@@ -118,18 +114,18 @@ public class AnimatorController {
             throw new Exception("Error reading image file.");
         String pathImages = (String) view.getComboPathImages().getSelectedItem();
         objs.addImages(nImages, dim, image, pathImages);
-        // Fim da criacao dos objetos Image
+        // ADIÇÃO DO OBJETO IMAGEM
 
-        // Inicio da criacao dos objetos com formas geometricas
+        // CRIAÇÃO DAS FORMAS GEOMÉTRICAS
         int nShapes = (Integer) view.getSpinnerShapes().getValue();
         ShapeType shapeType = (ShapeType) view.getComboShape().getSelectedItem();
         String pathShapes = (String) view.getComboPathShapes().getSelectedItem();
         switch (shapeType) {
-            case Star: objs.addStars(nShapes, dim, pathShapes); break;
-            case Rectangle: objs.addRectangles(nShapes, dim, pathShapes); break;
-            case Circle: objs.addCircles(nShapes, dim, pathShapes); break;
-         }
-        // Fim da configuracao dos objetos com formas geometricas
+            case ESTRELA: objs.addStars(nShapes, dim, pathShapes); break; 
+            case RETANGULO: objs.addRectangles(nShapes, dim, pathShapes); break;
+            case CIRCULO: objs.addCircles(nShapes, dim, pathShapes); break;            
+        }
+        // CRIAÇÃO DAS FORMAS GEOMÉTRICAS
     }
     
     private void createAndShowAnimFrame() {
@@ -156,15 +152,13 @@ public class AnimatorController {
         panelThread.start();
     }
 
-    // Leitura de imagem a partir de arquivo
+    // LEITURA DO ARQUIVO IMAGEM
     private BufferedImage readImage(String filename) {
         BufferedImage imgref = null;
         try {
             imgref = ImageIO.read(new File(filename));
         } catch (IOException e) {
-            //return null;
         }
         return imgref;
     }    
 }
-
