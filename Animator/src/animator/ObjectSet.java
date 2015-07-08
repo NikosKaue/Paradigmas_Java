@@ -9,13 +9,14 @@ import java.util.Random;
 
 // OBJETOS DA ANIMAÇÃO.
 class ObjectSet {
-
+    //herdando da classe Motion
     public double t = 1.2;
     private Random rnd = new Random();
     private Motion motion;
     public ObjectSet(Dimension dim){
         motion = new Motion(dim);          
     }
+    //Arrays
     private Image[] images;
     private ArrayList<Rectangle> ret = new ArrayList<Rectangle>();
     private ArrayList<Star> stars = new ArrayList<Star>();
